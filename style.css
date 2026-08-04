@@ -1,0 +1,59 @@
+/* 
+  1. ESTADO INICIAL: Visível para leitores de tela e teclado, mas oculto visualmente.
+  Padrão conhecido como "sr-only" (screen-reader only) ou "visually-hidden".
+*/
+.skip-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0); /* Retrocompatibilidade para navegadores antigos */
+    clip-path: inset(50%);  /* Propriedade moderna para recortar o elemento */
+    white-space: nowrap;    /* Evita que o texto crie quebras de linha no pixel invisível */
+    border: 0;
+}
+
+/* 
+  2. ESTADO FOCADO: Acionado ao navegar com a tecla TAB.
+  O elemento ressurge na tela seguindo diretrizes estritas do WCAG AAA.
+*/
+.skip-link:focus,
+.skip-link:focus-visible {
+    /* Reseta as propriedades que ocultavam o elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip: auto;
+    clip-path: none;
+    overflow: visible;
+    white-space: normal;
+    
+    /* Z-index alto para garantir que o link sobreponha TUDO no topo da página */
+    z-index: 9999;
+    
+    /* 
+      Estilização WCAG AAA:
+      - Contraste extremo: Fundo preto com texto branco (relação de contraste 21:1, muito acima do 7:1 exigido no AAA).
+      - Fonte legível.
+    */
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+    font-family: sans-serif;
+    font-weight: 700;
+    text-decoration: underline; /* Importante manter para identificar que é um link */
+    
+    /* 
+      WCAG (2.4.11 / 2.4.13) - Aparência do Foco: 
+      O indicador de foco deve ser altamente visível. Usamos um 'outline' 
+      destacado para não depender apenas da mudança de cor de fundo.
+    */
+    outline: 4px solid #ffcc00; /* Amarelo de alto contraste */
+    outline-offset: 2px; /* Dá um pequeno respiro entre a borda do link e o outline */
+}
