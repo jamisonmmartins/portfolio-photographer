@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- SEO & Acessibilidade: Declaração correta do charset para caracteres em português -->
+    <meta charset="UTF-8">
+    
+    <!-- WCAG AAA (1.4.4 / 1.4.10): Permitir que o usuário altere o zoom livremente.
+         NUNCA utilize user-scalable=no ou maximum-scale=1.0 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO: Título único, conciso e com palavra-chave relevante -->
+    <title>Título Descritivo da Página - Nome da Marca</title>
+    
+    <!-- SEO: Resumo relevante para motores de busca e leitores de tela (150-160 caracteres) -->
+    <meta name="description" content="Descrição clara e objetiva do conteúdo da página para otimização de busca e acessibilidade.">
+    
+    <!-- SEO: Define a URL canônica para evitar problemas de conteúdo duplicado -->
+    <link rel="canonical" href="https://www.seusite.com.br/">
+    
+    <!-- SEO & Redes Sociais: Metadados Open Graph -->
+    <meta property="og:title" content="Título Descritivo da Página - Nome da Marca">
+    <meta property="og:description" content="Descrição clara e objetiva do conteúdo da página.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.seusite.com.br/">
+    <meta property="og:image" content="https://www.seusite.com.br/imagem-og.jpg">
+</head>
+<body>
+
+    <!-- WCAG AAA (2.4.1): Skip Link (Atalho de Teclado).
+         Deve ser o primeiro elemento focável no DOM. Permite que leitores de tela e usuários
+         de teclado pulem o menu e vão direto ao conteúdo principal.
+         (Estilize via CSS com :focus para aparecer visualmente apenas quando focado). -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- A11y: Marco semântico de referência (Landmark) para o topo do site -->
+    <header>
+        
+        <!-- SEO & Acessibilidade (H1): Apenas UM h1 por página, representando o tópico principal -->
+        <h1>Nome da Marca</h1>
+
+        <!-- WCAG AAA: 
+             - type="button": Previne submissão acidental de formulários.
+             - aria-expanded="false": Informa às tecnologias assistivas se o menu está aberto ou fechado.
+             - aria-controls="main-nav": Conecta o botão ao ID do menu que ele controla.
+             - aria-label: Nomeia a ação do botão, já que o SVG interno é apenas um ícone decorativo.
+        -->
+        <button type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu de navegação">
+            <!-- A11y: aria-hidden="true" e focusable="false" ocultam o SVG dos leitores de tela e da navegação por teclado -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- WCAG AAA / Mobile-First: 
+             - <nav>: Região de navegação semântica.
+             - id="main-nav": Alvo de controle do botão.
+             - aria-label: Identifica a função desta navegação caso existam outras no site.
+             - hidden: Atributo HTML nativo que remove o elemento da árvore de acessibilidade e da renderização visual até ser alterado pelo JS.
+        -->
+        <nav id="main-nav" aria-label="Navegação principal" hidden>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <!-- WCAG AAA (2.4.1): Alvo do Skip Link para receber o foco/leitura principal -->
+    <main id="main-content" tabindex="-1">
+        <!-- O conteúdo principal da página entra aqui -->
+    </main>
+
+</body>
+</html>
