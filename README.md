@@ -64,7 +64,4 @@ A acessibilidade não foi tratada como um detalhe no final, mas como um **requis
 # Clone o repositório
 git clone [https://github.com/jamisonmmartins/portfolio-photographer.git](https://github.com/jamisonmmartins/portfolio-photographer.git)
 
-# Acesse a pasta do projeto
-cd rachel-green-portfolio
-
 # Abra o arquivo index.html no seu navegador ou via extensão Live Server no VS Code
