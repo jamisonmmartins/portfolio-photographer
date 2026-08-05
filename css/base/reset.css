@@ -1,0 +1,140 @@
+/**
+ * css/base/reset.css
+ * Um reset CSS moderno, focado em estabilidade cross-browser, 
+ * responsividade (Mobile-First) e aderência às diretrizes de Acessibilidade (WCAG).
+ */
+
+/* 1. Box Sizing: 
+   Garante que paddings e borders não aumentem a largura total do elemento, 
+   facilitando a criação de layouts consistentes. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Reset de Margens e Paddings Globais */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Configurações da Raiz (HTML) */
+html {
+  /* Evita que dispositivos móveis ampliem o texto sozinhos ao mudar a orientação (paisagem/retrato) */
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  
+  /* Rolagem suave ao clicar em links âncora (como o skip-link ou links do menu) */
+  scroll-behavior: smooth;
+}
+
+/* 4. Estilos Base (Body) consumindo os tokens do variable.css */
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  
+  /* Usa as fontes padrão do sistema operacional do usuário para performance (SEO e Web Vitals) e boa legibilidade */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  
+  /* Melhorias de renderização de texto */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Usando as variáveis definidas no variable.css */
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+}
+
+/* 5. Mídias Responsivas (Mobile-First) 
+   Garante que imagens, vídeos e SVGs nunca transbordem seus containers e se comportem como blocos. */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 6. Formulários e Botões:
+   Campos de formulário e botões normalmente ignoram a fonte do site. Isso resolve o problema. */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+}
+
+/* 7. Melhoria na Tipografia
+   Previne que palavras muito longas (como URLs) quebrem o layout de dispositivos móveis (Mobile-First). */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+}
+
+/* 8. Reset de Listas
+   Remove bolinhas/números de ul/ol globais. Como seu nav é construído com listas, isso já limpa o estilo. */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 9. A11Y GLOBAL: Foco visível (Teclado vs Mouse)
+   Utilizamos :focus-visible para garantir que o anel de foco só apareça para usuários
+   navegando pelo teclado (ou seja, não aparece o quadrado feio quando alguém clica com o mouse).
+   WCAG (2.4.11 / 2.4.13) */
+*:focus-visible {
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 3px;
+}
+
+/* 10. Links e Sublinhados
+   O text-decoration-skip-ink evita que o sublinhado atravesse partes descendentes das letras (como em "p" ou "g"),
+   melhorando drasticamente a legibilidade (A11Y e tipografia). */
+a {
+  text-decoration-skip-ink: auto;
+  color: var(--action-primary);
+  transition: color 0.3s ease; /* Transição suave de cor */
+}
+a:hover {
+  color: var(--action-hover);
+}
+
+/* 11. Reforçando o atributo Hidden nativo do HTML (WCAG & HTML5)
+   Garante que qualquer elemento com o atributo "hidden" (como o seu <nav> inicial)
+   suma por completo da tela e dos leitores de tela. */
+[hidden] {
+  display: none !important;
+}
+
+/* 12. A11Y GLOBAL (WCAG 2.3.3): Respeito a Movimento Reduzido
+   Muitos usuários sofrem de problemas vestibulares (náuseas/tonturas) com animações bruscas ou scroll suave.
+   Se o usuário ativou a "Redução de Movimento" no sistema operacional, o site desativa as animações. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto; /* Desliga o smooth scroll */
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
