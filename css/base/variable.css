@@ -1,0 +1,47 @@
+/**
+ * css/base/variable.css
+ * Arquivo de variáveis globais utilizando a metodologia de Design System (Tokens).
+ */
+
+:root {
+  /* ==========================================================================
+     TOKENS PRIMITIVOS (O "O Que")
+     Definem a paleta bruta de cores. Os nomes são baseados na cor em si
+     e na sua escala de luminosidade, sem vincular a um uso específico.
+     ========================================================================== */
+  --color-white: #FFFFFF;
+  --color-neutral-100: #F2F1F0; /* Off-white / Cinza bem claro */
+  --color-neutral-500: #B0B9BF; /* Cinza azulado intermediário */
+  --color-neutral-900: #303B40; /* Grafite escuro / Quase preto */
+  
+  --color-terracotta-300: #F2AD94; /* Pêssego / Laranja suave */
+  --color-terracotta-500: #A65B4B; /* Terracota / Vermelho terroso */
+
+  /* ==========================================================================
+     TOKENS SEMÂNTICOS (O "Por Que")
+     Consomem os tokens primitivos e descrevem o propósito da cor.
+     É aqui que o seu código deve ser "linkado" (ex: background-color: var(--bg-body)).
+     Isso facilita a criação futura de um Dark Mode, pois você alterará apenas o token semântico.
+     ========================================================================== */
+  
+  /* Backgrounds (Fundos) */
+  --bg-body: var(--color-neutral-100);      /* Cor de fundo principal da One Page/Landing Page */
+  --bg-surface: var(--color-white);         /* Cor para cards, modais ou blocos de destaque */
+  --bg-inverse: var(--color-neutral-900);   /* Cor de fundo para o footer ou seções escuras */
+  
+  /* Typography (Textos) */
+  --text-primary: var(--color-neutral-900); /* Texto principal (Garante altíssimo contraste no bg-body, foco em WCAG AAA) */
+  --text-secondary: var(--color-neutral-500); /* Textos de apoio, legendas e placeholders */
+  --text-inverse: var(--color-white);       /* Texto para ser lido sobre fundos escuros (--bg-inverse ou botoes) */
+  
+  /* Actions / Brand (Interações e Marca) */
+  --action-primary: var(--color-terracotta-500); /* Cor principal da marca para botões e links de destaque */
+  --action-hover: var(--color-terracotta-300);   /* Estado de hover/focus para os botões */
+  
+  /* Borders / Dividers (Bordas e Divisórias) */
+  --border-subtle: var(--color-neutral-500);     /* Linhas sutis para separar conteúdos (ex: hr, bordas de input) */
+  
+  /* Accessibility (Acessibilidade) */
+  /* Reutilizando a cor mais escura para o anel de foco, para garantir o contraste mínimo de 3:1 exigido pelo WCAG em estados de foco interativo */
+  --focus-outline: var(--color-neutral-900); 
+}
